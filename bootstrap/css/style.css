@@ -1,0 +1,237 @@
+#header{
+	font-size: 15px;
+}
+
+div.jumbotron{
+  background-color: #141f1f;
+  color: #dbdbdb;
+}
+
+a.dropdown-item{
+  font-size: 15px;
+}
+
+a.header{
+  text-align: center;
+  background-color: #141f1f;
+}
+.list-group{
+	margin-top: 25px;
+}
+.container {
+   min-height:50%;
+   position:relative;
+   font-size: 15px;
+   margin-bottom: 5%;
+}
+a.btn{
+	font-size: 15px;
+}
+
+a.btn-dark{
+	padding-left: 33%;
+	padding-right: 33%;
+	font-size: 15px;
+	border-radius: 30px;
+}
+
+input[type="submit"],
+input[type="reset"]{
+	padding-left: 20%;
+	padding-right: 20%;
+	font-size: 15px;
+}
+
+button.btn{
+	padding-left: 30%;
+	padding-right: 30%;
+	font-size: 15px;
+}
+
+input[type="text"],
+input[type="file"],
+input[type="number"]{
+	font-size: 15px;
+}
+
+select.form-control{
+	font-size: 15px;
+}
+
+textarea.form-control{
+	font-size: 15px;
+}
+
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+ 
+#footer{
+    height:50px;
+    line-height:50px;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background-color:	 #141f1f;
+    color: white;
+    font-size: 15px;
+}
+
+#box1{
+	margin-top: 30px;
+	width:230px;
+	height:300px;
+	background:white;
+	border:solid 1px #141f1f;
+	margin-bottom: 100px;
+}
+
+.main-wrapper{
+  width:100%;
+  overflow:hidden;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  height: 100%;
+  margin-top: 50px;
+}
+
+.main {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:flex;
+  height: 100%;
+}
+
+article{
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  width:60%;
+  margin-right: 30px;
+}
+
+aside{
+  -webkit-flex-shrink: 0;
+  flex-shrink: 0;
+  width:21%;
+  margin-bottom: 10%;
+}
+
+.login { 
+  font-size: 16px;
+}
+
+
+.login input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 6px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+  
+}
+
+.login td{
+	padding: 25px;
+}
+
+li.login{
+	margin-left: 500px;
+}
+.login button{
+	margin: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+  background: #fff;
+  border-color: #bbb;
+  color: #555;
+}
+
+.login input[type="text"]:focus,
+.login input[type="password"]:focus {
+  border-color: #888;
+}
+
+button {
+  border-color: transparent;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  background: #1f2e2e;
+  color: white;
+}
+
+button:focus {
+  border-color:  #141f1f;
+}
+
+div.card{
+  background-color: #141f1f;
+  color: #dbdbdb;
+  width: 60rem; 
+  margin-bottom: 50px;
+}
+
+.ignielPelangi {
+    background: linear-gradient(45deg, #f22613, #f89406, #26a65b, #5868ec, #f54e80, #f7ca18, #d2527f);
+    background-size: 500% 500%;
+    -webkit-animation: ignielGradient 12s ease infinite;
+    -moz-animation: ignielGradient 12s ease infinite;
+    animation: ignielGradient 12s ease infinite;
+}
+@-webkit-keyframes ignielGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes ignielGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes ignielGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+form {
+			width:500px;
+			margin:5px auto;
+		}
+		.search {
+			padding:7px 8px;
+			background:rgba(50, 50, 50, 0.2);
+			border:0px solid #dbdbdb;
+			border-radius: 20px;
+			padding-left: 10px;
+		}
+		.submit {
+			padding:5px 10px;
+			left:-8px;
+			border:2px solid  #141f1f;
+			background-color: #141f1f;
+			color:#fafafa;
+			border-radius: 20px;
+		}
+		.submit:hover  {
+			background-color:#fafafa;
+			color: #141f1f;
+		}
+				  
+		
