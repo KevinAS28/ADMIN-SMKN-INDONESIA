@@ -101,37 +101,88 @@ if($_SESSION['status']!="login"){
 						</thead>
 						<tbody>
 							<?php
-							$sql = mysqli_query($mysqli, "SELECT * FROM `nilai` INNER JOIN mapel ON nilai.id_mapel = mapel.id_mapel INNER JOIN siswa ON siswa.id_siswa= nilai.id_siswa INNER JOIN kelas ON kelas.id_kelas=siswa.id_kelas INNER JOIN prodi ON kelas.id_prodi=prodi.id_prodi ORDER BY id_nilai DESC") or die(mysqli_error($koneksi));
-						
-							if(mysqli_num_rows($sql) > 0){
+							//$sql = mysqli_query($mysqli, "SELECT * FROM `nilai` INNER JOIN mapel ON nilai.id_mapel = mapel.id_mapel INNER JOIN siswa ON siswa.id_siswa= nilai.id_siswa INNER JOIN kelas ON kelas.id_kelas=siswa.id_kelas INNER JOIN prodi ON kelas.id_prodi=prodi.id_prodi ORDER BY id_nilai DESC") or die(mysqli_error($koneksi));
+							$student_query = mysqli_query($mysqli, "SELECT * from `siswa` INNER JOIN kelas ON kelas.id_kelas=siswa.id_kelas INNER JOIN prodi ON kelas.id_prodi=prodi.id_prodi");
 							$no = 1;
-							while($data  = mysqli_fetch_assoc($sql)):
-								$ratarata = ($data['uh'] + $data['uas'] + $data['uts']) / 3;
-						?>
-							<tr>
+							while ($student = mysqli_fetch_assoc($student_query)){
+								$student_id = $student['id_siswa'];
+								$student_score_raw_query = "SELECT * FROM `nilai` INNER JOIN mapel ON nilai.id_mapel = mapel.id_mapel where `nilai`.id_siswa='$student_id'";
+								$student_score_query = mysqli_query($mysqli, $student_score_raw_query);
+								printf("%s<br>", $student_score_raw_query);
+								$student_score_count_query = mysqli_query($mysqli, "select count(*) from `nilai` where id_siswa='$student_id'");
+								$count = mysqli_fetch_array($student_score_count_query)[0];
 
-								<td><?php echo $no?></td>
-								<td><?php echo $data['nis'] ?></td>
-								<td><?php echo $data['nama_siswa'] ?></td>
-								<td><?php echo $data['tingkat_kelas'] ?> <?php echo $data['kode_prodi'] ?> <?php echo $data['kode_kelas'] ?></td>
-								<td><?php echo $data['nama_mapel'] ?></td>
-								<td><?php echo $data['uh'] ?></td>
-								<td><?php echo $data['uts'] ?></td>
-								<td><?php echo $data['uas'] ?></td>
-								<td><?php echo $ratarata; ?></td>
-								<td>
-									<a href="editnilai.php?id_nilai=<?php echo $data['id_nilai'] ?>"
-										class="btn btn-warning">Update</a>
-									<a href="deletenilai.php?id_nilai=<?php echo $data['id_nilai'] ?>"
-										onClick='return confirm("Apakah Ada yakin menghapus?")'
-										class="btn btn-danger">Delete</a>
-								</td>
-							</tr>
-							<?php
-							$no++;
-						  	endwhile;
-						}
+
+								$student_score = mysqli_fetch_assoc($student_score_query);
+								$ratarata = ($student_score['uas'] + $student_score['uts'] + $student_score['uh'])/3;
+								?>
+									<tr>
+										<td><?php echo $no?></td>
+										<td><?php echo $student['nis'] ?></td>
+										<td><?php echo $student['nama_siswa'] ?></td>
+										<td><?php echo $student['tingkat_kelas'] ?> <?php echo $student['kode_prodi'] ?> <?php echo $student['kode_kelas'] ?></td>
+
+
+										<?php //only for the first row ?>
+										<td><?php echo $student_score['nama_mapel'] ?></td>
+										<td><?php echo $student_score['uh'] ?></td>
+										<td><?php echo $student_score['uts'] ?></td>
+										<td><?php echo $student_score['uas'] ?></td>
+										<td><?php echo $ratarata; ?></td> 
+										<td>
+											<a href="editnilai.php?id_nilai=<?php echo $data['id_nilai'] ?>"
+												class="btn btn-warning">Update</a>
+											<a href="deletenilai.php?id_nilai=<?php echo $data['id_nilai'] ?>"
+												onClick='return confirm("Apakah Ada yakin menghapus?")'
+												class="btn btn-danger">Delete</a>
+										</td>
+										
+									</tr>
+
+								<?php
+								while ($student_score = mysqli_fetch_assoc($student_score_query)){								
+									print_r($student_score);
+									$ratarata = ($student_score['uas'] + $student_score['uts'] + $student_score['uh'])/3;
+								?>
+									<tr>
+										<td colspan="4"></td>
+										<!-- <td></td>
+										<td></td>
+										<td></td> -->
+										<td><?php echo $student_score['nama_mapel'] ?></td>
+										<td><?php echo $student_score['uh'] ?></td>
+										<td><?php echo $student_score['uts'] ?></td>
+										<td><?php echo $student_score['uas'] ?></td>
+										<td><?php echo $ratarata; ?></td> 
+										<td>
+											<a href="editnilai.php?id_nilai=<?php echo $data['id_nilai'] ?>"
+												class="btn btn-warning">Update</a>
+											<a href="deletenilai.php?id_nilai=<?php echo $data['id_nilai'] ?>"
+												onClick='return confirm("Apakah Ada yakin menghapus?")'
+												class="btn btn-danger">Delete</a>
+										</td>
+									</tr>																		
+								<?php
+								//$kelas_siswa = mysqli_query($mysqli, "SELECT * FROM `kelas` where `kelas_id`='' ")
+								}
+								$no++;
+								?>
+										<!-- <td><?php echo $ratarata; ?></td> 
+										<td>
+											<a href="editnilai.php?id_nilai=<?php echo $data['id_nilai'] ?>"
+												class="btn btn-warning">Update</a>
+											<a href="deletenilai.php?id_nilai=<?php echo $data['id_nilai'] ?>"
+												onClick='return confirm("Apakah Ada yakin menghapus?")'
+												class="btn btn-danger">Delete</a>
+										</td>
+									</tr>								 -->
+								<?php
+
+							}
 						?>
+
+
+						
 						</tbody>
 					</table>
 				</article>
